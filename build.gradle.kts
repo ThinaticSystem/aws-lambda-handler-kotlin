@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    val awsLambdaJavaCoreVersion: String by project
+    implementation("com.amazonaws:aws-lambda-java-core:$awsLambdaJavaCoreVersion")
 }
 
 tasks.test {
