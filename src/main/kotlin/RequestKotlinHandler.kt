@@ -20,7 +20,7 @@ abstract class RequestKotlinHandler<I, O>(
 
     abstract fun handleRequest(input: I): O
 
-    override fun handleRequest(
+    final override fun handleRequest(
         inputStream: InputStream,
         outputStream: OutputStream,
         context: Context,
