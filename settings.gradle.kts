@@ -2,6 +2,8 @@ pluginManagement {
     plugins {
         val kotlinVersion: String by settings
         kotlin("jvm") version kotlinVersion
+        val shadowVersion: String by settings
+        id("com.github.johnrengelman.shadow") version shadowVersion
     }
 }
 plugins {
