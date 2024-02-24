@@ -10,7 +10,6 @@ import java.io.OutputStream
 
 abstract class RequestKotlinHandler<I, O>(
     private val inputClazz: Class<I>,
-    private val outputClazz: Class<O>,
     private val jsonMapper: JsonMapper = defaultJsonMapper,
 ) : RequestStreamHandler {
     companion object {
