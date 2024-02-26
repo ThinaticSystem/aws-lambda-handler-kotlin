@@ -3,7 +3,7 @@ plugins {
     id("com.github.johnrengelman.shadow")
 }
 
-group = "com.thinaticsystem"
+group = "com.thinaticsystem.awslambdahandlerkotlin"
 version = "1.0-SNAPSHOT"
 
 repositories {

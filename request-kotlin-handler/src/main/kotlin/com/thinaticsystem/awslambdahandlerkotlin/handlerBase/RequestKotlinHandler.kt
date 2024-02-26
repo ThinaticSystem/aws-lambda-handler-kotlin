@@ -1,4 +1,4 @@
-package com.thinaticsystem
+package com.thinaticsystem.awslambdahandlerkotlin.handlerBase
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler
