@@ -12,7 +12,18 @@ repositories {
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-    implementation(project(":request-kotlin-handler"))
+    implementation("com.thinaticsystem.awslambdahandlerkotlin:request-kotlin-handler")
+}
+/*
+ * TODO "request-kotlin-handler" has not been published yet
+ *      Use a local source module instead of the (will be) published one.
+ */
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        substitute(module("com.thinaticsystem.awslambdahandlerkotlin:request-kotlin-handler"))
+            .using(project(":request-kotlin-handler"))
+            .because("Not published yet")
+    }
 }
 
 tasks.test {
