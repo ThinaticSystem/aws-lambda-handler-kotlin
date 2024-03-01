@@ -1,6 +1,6 @@
 package org.example.handlers.honi
 
 data class HoniInput(
-    val name: String,
+    val word: String,
     val repeatCount: Int,
 )
