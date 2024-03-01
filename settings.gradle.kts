@@ -13,3 +13,7 @@ plugins {
     include(it)
     project(":$it").name = it
 }
+"template-handler-kotlin".also {
+    include(it)
+    project(":$it").name = it
+}
