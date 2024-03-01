@@ -3,8 +3,7 @@ package com.thinaticsystem.awslambdahandlerkotlin.requestKotlinHandler.handlerBa
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler
 import com.fasterxml.jackson.databind.json.JsonMapper
-import com.fasterxml.jackson.module.kotlin.jsonMapper
-import com.fasterxml.jackson.module.kotlin.kotlinModule
+import com.thinaticsystem.awslambdahandlerkotlin.requestKotlinHandler.jsonMapper.defaultJsonMapper
 import java.io.InputStream
 import java.io.OutputStream
 
@@ -12,12 +11,6 @@ abstract class RequestKotlinHandler<I, O>(
     private val inputClazz: Class<I>,
     private val jsonMapper: JsonMapper = defaultJsonMapper,
 ) : RequestStreamHandler {
-    companion object {
-        val defaultJsonMapper = jsonMapper {
-            addModule(kotlinModule())
-        }
-    }
-
     abstract fun handleRequest(input: I): O
 
     final override fun handleRequest(
