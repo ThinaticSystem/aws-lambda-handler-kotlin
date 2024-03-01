@@ -11,7 +11,7 @@ abstract class RequestKotlinHandler<I, O>(
     private val inputClazz: Class<I>,
     private val jsonMapper: JsonMapper = defaultJsonMapper,
 ) : RequestStreamHandler {
-    abstract fun handleRequest(input: I): O
+    abstract fun handleRequest(input: I, context: Context): O
 
     final override fun handleRequest(
         inputStream: InputStream,
@@ -19,7 +19,7 @@ abstract class RequestKotlinHandler<I, O>(
         context: Context,
     ) {
         val input = this.jsonMapper.readValue(inputStream, this.inputClazz)
-        val output = this.handleRequest(input)
+        val output = this.handleRequest(input, context)
         this.jsonMapper.writeValue(outputStream, output)
     }
 }
