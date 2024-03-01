@@ -13,29 +13,6 @@ abstract class RequestKotlinHandler<I, O>(
 ) : RequestStreamHandler {
     abstract fun handleRequest(input: I, context: Context): O
 
-    final override fun handleRequest(
-        inputStream: InputStream,
-        outputStream: OutputStream,
-        context: Context,
-    ) {
-        // Read and Deserialize input
-        val input = try {
-            this.jsonMapper.readValue(inputStream, this.inputClazz)
-        } catch (e: Exception) {
-            this.handleInputReadingException(e, context)
-        }
-
-        // Process by overrider
-        val output = this.handleRequest(input, context)
-
-        // Serialize and Write output
-        try {
-            this.jsonMapper.writeValue(outputStream, output)
-        } catch (e: Exception) {
-            this.handleOutputWritingException(e, context)
-        }
-    }
-
     /**
      * Override if you want to handle exceptions thrown when reading input.
      *
@@ -64,5 +41,28 @@ abstract class RequestKotlinHandler<I, O>(
      */
     open fun handleOutputWritingException(exception: Exception, context: Context): I {
         throw NotHandledException("Failed to write output", exception)
+    }
+
+    final override fun handleRequest(
+        inputStream: InputStream,
+        outputStream: OutputStream,
+        context: Context,
+    ) {
+        // Read and Deserialize input
+        val input = try {
+            this.jsonMapper.readValue(inputStream, this.inputClazz)
+        } catch (e: Exception) {
+            this.handleInputReadingException(e, context)
+        }
+
+        // Process by overrider
+        val output = this.handleRequest(input, context)
+
+        // Serialize and Write output
+        try {
+            this.jsonMapper.writeValue(outputStream, output)
+        } catch (e: Exception) {
+            this.handleOutputWritingException(e, context)
+        }
     }
 }
