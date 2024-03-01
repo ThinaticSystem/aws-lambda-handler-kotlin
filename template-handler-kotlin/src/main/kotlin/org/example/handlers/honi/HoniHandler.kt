@@ -1,4 +1,4 @@
-package org.example.handler.honi
+package org.example.handlers.honi
 
 import com.thinaticsystem.awslambdahandlerkotlin.requestKotlinHandler.handlerBase.RequestKotlinHandler
 

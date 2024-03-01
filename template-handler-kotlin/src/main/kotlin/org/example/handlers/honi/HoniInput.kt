@@ -1,4 +1,4 @@
-package org.example.handler.honi
+package org.example.handlers.honi
 
 data class HoniInput(
     val name: String,
