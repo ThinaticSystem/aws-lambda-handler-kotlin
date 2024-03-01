@@ -7,10 +7,21 @@ import com.thinaticsystem.awslambdahandlerkotlin.requestKotlinHandler.jsonMapper
 import java.io.InputStream
 import java.io.OutputStream
 
+/**
+ * The base class for an AWS Lambda handler that supports Kotlin data classes as Input (request) and Output (response).
+ *
+ * @param inputClazz JavaClass of the type of Input
+ * @param jsonMapper (Optional) Custom JSON object mapper. The default is [defaultJsonMapper].
+ */
 abstract class RequestKotlinHandler<I, O>(
     private val inputClazz: Class<I>,
     private val jsonMapper: JsonMapper = defaultJsonMapper,
 ) : RequestStreamHandler {
+    /**
+     * Override to handle request.
+     *
+     * @param context Lambda handler context
+     */
     abstract fun handleRequest(input: I, context: Context): O
 
     /**
