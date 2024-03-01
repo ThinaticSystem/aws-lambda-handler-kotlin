@@ -43,7 +43,7 @@ abstract class RequestKotlinHandler<I, O>(
      * @param context Lambda handler context
      *
      * @return Fallback input value.
-     * If you don't want to provide a fallback, you can throw an exception without returning anything.</p>
+     * If you don't want to provide a fallback, you can throw an exception without returning anything.
      *
      * @throws NotHandledException In the default implementation, all exceptions are wrapped in a [NotHandledException] and thrown.
      */
@@ -58,7 +58,7 @@ abstract class RequestKotlinHandler<I, O>(
      * @param context Lambda handler context
      *
      * @return Fallback output value.
-     * If you don't want to provide a fallback, you can throw an exception without returning anything.</p>
+     * If you don't want to provide a fallback, you can throw an exception without returning anything.
      *
      * @throws NotHandledException In the default implementation, all exceptions are wrapped in a [NotHandledException] and thrown.
      */
